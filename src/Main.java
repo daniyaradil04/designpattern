@@ -7,6 +7,7 @@ public class Main {
         Payment paypalPayment = new PayPalPayment("adildaniyar@paypal.com");
 
         // use strategy through singleton
+        // new comment
         paymentProcessor.processPayment(creditCardPayment, 550);
         paymentProcessor.processPayment(paypalPayment, 300);
     }
