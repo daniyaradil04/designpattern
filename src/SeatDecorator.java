@@ -12,6 +12,6 @@ public class SeatDecorator implements FlightDecorator{
 
     @Override
     public String getDescription() {
-        return flight.getDescription() + " with Seat Selection";
+        return flight.getDescription() + " with optionally Seat";
     }
 }

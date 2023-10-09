@@ -1,26 +1,28 @@
 public class Main {
     public static void main(String[] args) {
+
+        //economy no option
         Flight economyFlight = new EconomyFlight();
         System.out.println("Cost: tg" + economyFlight.getCost());
         System.out.println("Description: " + economyFlight.getDescription());
 
         System.out.println("--------------------------");
 
-        // Book an economy flight with seat selection
+        //economy with seat
         Flight flightWithSeatSelection = new SeatDecorator(new EconomyFlight());
         System.out.println("Cost: tg" + flightWithSeatSelection.getCost());
         System.out.println("Description: " + flightWithSeatSelection.getDescription());
 
         System.out.println("--------------------------");
 
-        // Book an economy flight with meal option
+        //economy with meal
         Flight flightWithMealOption = new MealDecorator(new EconomyFlight());
         System.out.println("Cost: tg" + flightWithMealOption.getCost());
         System.out.println("Description: " + flightWithMealOption.getDescription());
 
         System.out.println("--------------------------");
 
-        // Book an economy flight with both seat selection and meal option
+        //economy with both
         Flight flightWithSeatAndMeal = new MealDecorator(new SeatDecorator(new EconomyFlight()));
         System.out.println("Cost: tg" + flightWithSeatAndMeal.getCost());
         System.out.println("Description: " + flightWithSeatAndMeal.getDescription());

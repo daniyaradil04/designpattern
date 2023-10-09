@@ -12,6 +12,6 @@ public class MealDecorator implements FlightDecorator{
 
     @Override
     public String getDescription() {
-        return flight.getDescription() + " with Meal Option";
+        return flight.getDescription() + " with Meal";
     }
 }
