@@ -1,14 +1,28 @@
 public class Main {
     public static void main(String[] args) {
-        PaymentProcessor paymentProcessor = PaymentProcessor.getInstance();
+        Flight economyFlight = new EconomyFlight();
+        System.out.println("Cost: tg" + economyFlight.getCost());
+        System.out.println("Description: " + economyFlight.getDescription());
 
-        // payment strategy
-        Payment creditCardPayment = new CreditCardPayment("4400-4301-5170-0942");
-        Payment paypalPayment = new PayPalPayment("adildaniyar@paypal.com");
+        System.out.println("--------------------------");
 
-        // use strategy through singleton
-        // new comment
-        paymentProcessor.processPayment(creditCardPayment, 550);
-        paymentProcessor.processPayment(paypalPayment, 300);
+        // Book an economy flight with seat selection
+        Flight flightWithSeatSelection = new SeatDecorator(new EconomyFlight());
+        System.out.println("Cost: tg" + flightWithSeatSelection.getCost());
+        System.out.println("Description: " + flightWithSeatSelection.getDescription());
+
+        System.out.println("--------------------------");
+
+        // Book an economy flight with meal option
+        Flight flightWithMealOption = new MealDecorator(new EconomyFlight());
+        System.out.println("Cost: tg" + flightWithMealOption.getCost());
+        System.out.println("Description: " + flightWithMealOption.getDescription());
+
+        System.out.println("--------------------------");
+
+        // Book an economy flight with both seat selection and meal option
+        Flight flightWithSeatAndMeal = new MealDecorator(new SeatDecorator(new EconomyFlight()));
+        System.out.println("Cost: tg" + flightWithSeatAndMeal.getCost());
+        System.out.println("Description: " + flightWithSeatAndMeal.getDescription());
     }
 }
