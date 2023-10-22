@@ -4,35 +4,38 @@ public class Main {
     public static void main(String[] args) {
 
         //economy no option
-        Flight economyFlight = new EconomyFlight();
-        System.out.println("Cost: tg" + economyFlight.getCost());
-        System.out.println("Description: " + economyFlight.getDescription());
+        Flight internalEconomyFlight = new EconomyFlight();
+        System.out.println("Cost: tg" + internalEconomyFlight.getCost());
+        System.out.println("Description: " + internalEconomyFlight.getDescription());
 
         System.out.println("--------------------------");
 
         //economy with seat
-        Flight flightWithSeatSelection = new SeatDecorator(new EconomyFlight());
-        System.out.println("Cost: tg" + flightWithSeatSelection.getCost());
-        System.out.println("Description: " + flightWithSeatSelection.getDescription());
+        Flight internalFlightWithSeatSelection = new SeatDecorator(new EconomyFlight());
+        System.out.println("Cost: tg" + internalFlightWithSeatSelection.getCost());
+        System.out.println("Description: " + internalFlightWithSeatSelection.getDescription());
 
         System.out.println("--------------------------");
 
         //economy with meal
-        Flight flightWithMealOption = new MealDecorator(new SeatDecorator(new EconomyFlight()));
-        System.out.println("Cost: tg" + flightWithMealOption.getCost());
-        System.out.println("Description: " + flightWithMealOption.getDescription());
+        Flight internalFlightWithMealOption = new MealDecorator(new SeatDecorator(new EconomyFlight()));
+        System.out.println("Cost: tg" + internalFlightWithMealOption.getCost());
+        System.out.println("Description: " + internalFlightWithMealOption.getDescription());
 
         System.out.println("--------------------------");
 
         //economy with both
-        Flight flightWithSeatAndMeal = new MealDecorator(new SeatDecorator(new EconomyFlight()));
-        System.out.println("Cost: tg" + flightWithSeatAndMeal.getCost());
-        System.out.println("Description: " + flightWithSeatAndMeal.getDescription());
+        Flight internalFlightWithSeatAndMeal = new MealDecorator(new SeatDecorator(new EconomyFlight()));
+        System.out.println("Cost: tg" + internalFlightWithSeatAndMeal.getCost());
+        System.out.println("Description: " + internalFlightWithSeatAndMeal.getDescription());
 
         System.out.println("--------------------------");
 
-        ExternalFlightService externalService = new ExternalFlightService();
-        FlightBooking adapter = new ExternalFlightServiceAdapter(externalService);
-        adapter.bookFlight("CityX", "CityY", "2023-11-01");
+
+        ExternalFlightServiceAdapter externalServiceAdapter = new ExternalFlightServiceAdapter(new ExternalFlightService());
+        System.out.println("Cost: tg" + externalServiceAdapter.getCost());
+        System.out.println("Description: " + externalServiceAdapter.getDescription());
+
+
     }
 }
