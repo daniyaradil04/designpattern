@@ -32,12 +32,6 @@ public class Main {
         System.out.println("--------------------------");
 
         ExternalFlightService externalService = new ExternalFlightService();
-        Flight externalFlight = new ExternalFlightServiceAdapter(externalService);
-
-        System.out.println("Cost: $" + externalFlight.getCost());
-        System.out.println("Description: " + externalFlight.getDescription());
-
-        ExternalFlightService externalService = new ExternalFlightService();
         FlightBooking adapter = new ExternalFlightServiceAdapter(externalService);
         adapter.bookFlight("CityX", "CityY", "2023-11-01");
     }
