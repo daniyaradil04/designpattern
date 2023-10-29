@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -31,11 +29,11 @@ public class Main {
 
         System.out.println("--------------------------");
 
+        FlightBooking internalFlightService = new InternalFlightService();
+        internalFlightService.bookFlight("CityA", "CityB", "2023-23-10");
 
-        ExternalFlightServiceAdapter externalServiceAdapter = new ExternalFlightServiceAdapter(new ExternalFlightService());
-        System.out.println("Cost: tg" + externalServiceAdapter.getCost());
-        System.out.println("Description: " + externalServiceAdapter.getDescription());
-
-
+        ExternalFlightService externalService = new ExternalFlightService();
+        FlightBooking adapter = new ExternalFlightServiceAdapter(externalService);
+        adapter.bookFlight("CityA", "CityB", "2023-23-10");
     }
 }

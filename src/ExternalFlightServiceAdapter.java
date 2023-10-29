@@ -1,18 +1,11 @@
-public class ExternalFlightServiceAdapter implements Flight {
+public class ExternalFlightServiceAdapter implements FlightBooking {
     private ExternalFlightService externalService;
 
     public ExternalFlightServiceAdapter(ExternalFlightService externalService) {
         this.externalService = externalService;
     }
 
-    @Override
-    public double getCost() {
-        // Cost calculation logic for external flights
-        return 75000.0;  // Base cost for external flight
-    }
-
-    @Override
-    public String getDescription() {
-        return "External economy flight";  // Description for external flights
+    public void bookFlight(String departure, String destination, String date) {
+        externalService.bookExternalFlight(departure, destination, date);
     }
 }
