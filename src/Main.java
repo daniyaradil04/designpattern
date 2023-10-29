@@ -10,8 +10,11 @@ public class Main {
         FlightBooking adapter = new ExternalFlightServiceAdapter(externalService);
         adapter.bookFlight("CityA", "CityB", "2023-23-10");
 
-        FlightStatusObserver userObserver = new UserFlightStatusObserver(); // Implement this class
+        FlightStatusObserver userObserver = new UserFlightStatusObserver();
+        FlightStatusObserver userObserver1 = new UserFlightStatusObserver();
         FlightStatusObservable internalFlightServiceObservable = new InternalFlightService();
         internalFlightServiceObservable.addObserver(userObserver);
+        internalFlightServiceObservable.addObserver(userObserver1);
+        internalFlightServiceObservable.notifyObservers("City A");
     }
 }
