@@ -15,6 +15,6 @@ public class Main {
         FlightStatusObservable internalFlightServiceObservable = new InternalFlightService();
         internalFlightServiceObservable.addObserver(userObserver);
         internalFlightServiceObservable.addObserver(userObserver1);
-        internalFlightServiceObservable.notifyObservers("City A");
+        internalFlightServiceObservable.notifyObservers("Economic flight from CityA to CityB is booked");
     }
 }
